@@ -190,6 +190,13 @@ CGI::Expand - convert flat hash to nested data using TT2's dot convention
 
 =head1 SYNOPSIS
 
+    use CGI::Expand ();
+    use CGI; # or Apache::Request, etc.
+
+    $args = CGI::Expand->expand_cgi( CGI->new('a.0=3&a.2=4&b.c.0=x') );
+
+Or, as an imported function for convenience:
+
     use CGI::Expand;
     use CGI; # or Apache::Request, etc.
 
@@ -217,7 +224,7 @@ appropriate "param" method.  Or you can use C<expand_hash> directly.
 If you prefer to use a different flattening convention then CGI::Expand
 can be subclassed.
 
-=head1 Motivation
+=head1 MOTIVATION
 
 The Common Gateway Interface restricts parameters to name=value pairs,
 but often we'd like to use more structured data.  This module
@@ -267,15 +274,21 @@ allowing '.' , '\' and digits in hash keys.  The escaping
   # or to put . and \ literals in keys
   a\\b\.c=hi  ---  { 'a\\b\.c' => "hi" }
 
-=head1 EXPORTS
+=head1 METHODS / FUNCTIONS
 
-C<expand_cgi> by default, C<expand_hash> and C<collapse_hash> upon request.
+The routines listed below are all methods, but can be imported to be called as
+functions.  In other words, you can call C<< CGI::Expand->expand_hash(...) >>
+or you can import C<expand_hash> and then call C<expand_hash(...)> without
+using method invocation syntax.
 
-=head1 FUNCTIONS
+C<expand_cgi> is exported by default. C<expand_hash> and C<collapse_hash> are
+exported upon request.
 
 =over 4
 
-=item C< $deep_hash = expand_cgi ( $CGI_object_or_similar ) >
+=item expand_cgi
+
+    my $deep_hash = expand_cgi ( $CGI_object_or_similar );
 
 Takes a CGI object and returns a hashref for the expanded
 data structure (or dies, see L<"EXCEPTIONS">).
@@ -300,7 +313,9 @@ will have an undefined ordering).
     #   e => ['1','2'], # order depends on CGI/etc
     # };
 
-=item C< $deep_hash = expand_hash ( $flat_hash ) >
+=item expand_hash
+
+    my $deep_hash = expand_hash( $flat_hash );
 
 Expands the keys of the parameter hash according
 to the dot convention (or dies, see L<"EXCEPTIONS">).
@@ -308,7 +323,9 @@ to the dot convention (or dies, see L<"EXCEPTIONS">).
     $args = expand_hash({ 'a.b.1' => [1,2] });
     # $args = { a => { b => [undef, [1,2] ] } }
 
-=item C< $flat_hash = collapse_hash ( $deep_hash ) >
+=item collapse_hash
+
+    my $flat_hash = collapse_hash( $deep_hash );
 
 The inverse of expand_hash.  Converts the $deep_hash data structure
 back into a flat hash.
@@ -320,7 +337,7 @@ back into a flat hash.
 
 =head1 EXCEPTIONS
 
-B<WARNING> the USERs of your site can cause these exceptions
+B<WARNING>: The I<users> of your site can cause these exceptions
 so you must decide how they are handled (possibly by letting
 the process die).
 
@@ -349,12 +366,16 @@ max_array, split_name and join_name.
 
 =over 4
 
-=item $subclass->max_array()
+=item max_array
+
+    $subclass->max_Array;
 
 The limit for the array size, defaults to 100.  The value 0 can be
 used to disable the use of arrays, everthing is a hash key.
 
-=item $subclass->separator()
+=item separator
+
+    $subclass->separator;
 
 Returns the separator charaters used to split the keys of the flat hash.
 The default is '.' but multiple characters are allowed.  The default
@@ -363,13 +384,17 @@ join will use the first character.
 If there is no separator then '\' escaping does not occur.
 This is for use with split_name and join_name below.
 
-=item @segments = $subclass->split_name($name)
+=item split_name
+
+    my @segments = $subclass->split_name($name);
 
 The split_name method must break $name in to key segments for the
 nested data structure.  The default version just splits on the
 separator characters with a bit of fiddling to handle escaping.
 
-=item $name = $subclass->join_name(@segments)
+=item join_name
+
+    my $name = $subclass->join_name(@segments);
 
 The inverse of split_name, joins the segments back to the key for
 the flat hash.  The default version uses the first character of the
