@@ -1,5 +1,5 @@
 package CGI::Expand;
-$VERSION = '2.02';
+$VERSION = '2.03';
 use strict;
 use warnings;
 
@@ -461,5 +461,7 @@ There's a tiny and beautiful reduce solution somewhere on perlmonks.
 =head1 AUTHOR
 
 Brad Bowman E<lt>cgi-expand@bereft.netE<gt>
+
+Pod corrections: Ricardo Signes
 
 =cut 

@@ -23,3 +23,6 @@ Revision history for Perl extension CGI::Expand.
 
 2.02 Mon Apr 10 15:02:26 CEST 2006
     - Only write Makefile postamble on linux (caused trouble under Windows)
+
+2.03 Fri Mar 25 13:35:30 EST 2011
+    - Documentation fix #56170 and tweaks (RJBS)
