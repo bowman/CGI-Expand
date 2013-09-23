@@ -464,4 +464,23 @@ Brad Bowman E<lt>cgi-expand@bereft.netE<gt>
 
 Pod corrections: Ricardo Signes
 
-=cut 
+=head1 COPYRIGHT
+
+Copyright (C) 2004-2013, Brad Bowman.
+
+=head1 LICENSE
+
+CGI::Expand is free software; you can redistribute it and/or modify it under
+the terms of either:
+
+a) the L<GNU General Public License|perlgpl> as published by the Free
+Software Foundation; either version 1, or (at your option) any
+later version, or
+
+b) the L<"Artistic License"|perlartistic> which comes with Perl.
+
+For more details, see the full text of the licenses at
+<http://www.perlfoundation.org/artistic_license_1_0>,
+and <http://www.gnu.org/licenses/gpl-1.0.html>.
+
+=cut
