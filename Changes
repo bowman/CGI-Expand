@@ -1,7 +1,7 @@
 Revision history for Perl extension CGI::Expand.
 
 1.01 Thu Jan  8 15:22:08 2004
-	- Renamed and published to CPAN
+    - Renamed and published to CPAN
 
 1.02 Thu Jan  8 23:00:56 EST 2004
     - Fixed bad README
@@ -13,7 +13,7 @@ Revision history for Perl extension CGI::Expand.
 1.06 Wed Dec 21 23:14:01 CET 2005
     - Reworked the internals to be OO-ish for customization while keeping
       the procedural interface.
-    - Deprecated the package variables $Max_Array && $Separator
+    - Deprecated the package variables $Max_reray && $Separator
       and added warnings if they are used.
     - The missing versions were unreleased
 
