@@ -13,6 +13,7 @@ WriteMakefile(
 		'Test::Exception' => 0,
 		'Test::More' => 0,
 	}, # e.g., Module::Name => 1.1
+    LICENSE => 'perl',
 
     ($] >= 5.005 ?    ## Add these new keywords supported since 5.005
       (ABSTRACT_FROM => 'Expand.pm', # retrieve abstract from module
