@@ -29,3 +29,6 @@ Revision history for Perl extension CGI::Expand.
 
 2.04 Mon Sep 23 10:22:11 EST 2013
     - Add COPYRIGHT and LICENSE clarification
+
+2.05 Wed Apr 23 22:28:28 PDT 2014
+    - Correct doc typos
