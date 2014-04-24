@@ -361,7 +361,7 @@ are reported as exceptions.  (See test.pl for for examples)
 Subclassing in now the preferred way to change the behaviour and
 defaults.  (Previously package variables were used, see test.pl).
 
-The methods which may be overriden by subclasses are separator,
+The methods which may be overridden by subclasses are separator,
 max_array, split_name and join_name.
 
 =over 4
@@ -377,7 +377,7 @@ used to disable the use of arrays, everthing is a hash key.
 
     $subclass->separator;
 
-Returns the separator charaters used to split the keys of the flat hash.
+Returns the separator characters used to split the keys of the flat hash.
 The default is '.' but multiple characters are allowed.  The default
 join will use the first character.
 
