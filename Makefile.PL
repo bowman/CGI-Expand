@@ -9,7 +9,7 @@ BEGIN {
 WriteMakefile(
     'NAME'		=> 'CGI::Expand',
     'VERSION_FROM'	=> 'Expand.pm', # finds $VERSION
-    'PREREQ_PM'		=> {
+    'BUILD_REQUIRES'	=> {
 		'Test::Exception' => 0,
 		'Test::More' => 0,
 	}, # e.g., Module::Name => 1.1
